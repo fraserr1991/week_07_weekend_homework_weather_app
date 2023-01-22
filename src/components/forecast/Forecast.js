@@ -1,4 +1,5 @@
 import '../forecast/Forecast.css'
+//Accordian gives functionality for realated containers
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemPanel, AccordionItemButton } from "react-accessible-accordion"
 
 const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -13,14 +14,31 @@ const Forecast = ({ forecastData }) => {
                 {forecastData.list.splice(0, 7).map((item, index) => (
                     <AccordionItem key={index}>
                         <AccordionItemHeading>
-                            <AccordionItemButton><div className="daily-item">
-                                <img alt="weather" className="icon-small" src={`icons/${item.weather[0].icon}.png`} />
-                                <label className="day">{forecastDays[index]}</label>
-                                <label className="description">{item.weather[0].description}</label>
-                                <label className="min-max">{Math.round(item.main.temp_max)}°c / {Math.round(item.main.temp_min)}°c</label>
-                            </div></AccordionItemButton>
+                            <AccordionItemButton>
+                                <div className="daily-item">
+                                    <img alt="weather"
+                                        className="icon-small"
+                                        src={`icons/${item.weather[0].icon}.png`}
+                                    />
+                                    <label className="day">{forecastDays[index]}</label>
+                                    <label className="description">
+                                        {item.weather[0].description}
+                                    </label>
+                                    <label className="min-max">
+                                        {Math.round(item.main.temp_max)}°c /{" "}
+                                        {Math.round(item.main.temp_min)}°c
+                                    </label>
+                                </div>
+                            </AccordionItemButton>
                         </AccordionItemHeading>
-                        <AccordionItemPanel></AccordionItemPanel>
+                        <AccordionItemPanel><div className="daily-details-grid">
+                            <div className="daily-details-grid-item">
+                                <label>Pressure</label>
+                                <label>{item.main.pressure}</label>
+                                <label>Humidity</label>
+                                <label>{item.main.humidity}</label>
+                            </div>
+                        </div></AccordionItemPanel>
                     </AccordionItem>
                 ))}
 

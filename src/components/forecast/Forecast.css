@@ -22,4 +22,17 @@
 .day {
     color: #212121;
     flex: 1 1;
+    font-weight: 600;
+    margin-left: 15px;
+    padding-right: 30%;
+}
+
+.description {
+    flex: 1 1;
+    margin-right: 15px;
+    text-align: right;
+}
+
+.min-max {
+    color: #757575;
 }
